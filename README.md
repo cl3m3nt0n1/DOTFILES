@@ -7,7 +7,7 @@ I like to keep things simple so don't expect wonders here, just a basic setup th
 
 I kept most things within the hypr folder in order to still be able to use Sway (on my Fedora Laptop), just in case somehing goes wrong.
 
-A huge thanks to adi1090x and every contributor of [this](https://github.com/adi1090x/rofi?tab=readme-ov-file) wonderful work project for their fantastic  collection of rofi applets, launchers and powermenus. Check out the repo, it's fantastic.
+A huge thanks to adi1090x and every contributor of [this](https://github.com/adi1090x/rofi?tab=readme-ov-file) wonderful project for their fantastic  collection of rofi applets, launchers and powermenus. Check out the repo, it's fantastic.
 
 Thanks also to [Eric Murphy](https://ericmurphy.xyz/) for his [rofi wifi menu](https://github.com/ericmurphyxyz/rofi-wifi-menu) (and sense of humor). Don't hesitate to check out his youtube channel! 
 
