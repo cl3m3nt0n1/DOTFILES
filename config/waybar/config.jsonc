@@ -1,0 +1,193 @@
+// -*- mode: jsonc -*-
+{
+    // "layer": "top", // Waybar at top layer
+    // "position": "left", // Waybar position (top|bottom|left|right)
+    "height": 30, // Waybar height (to be removed for auto height)
+    "spacing": 4, // Gaps between modules (4px)
+    "modules-left": [
+        "custom/power_menu",
+        "cpu",
+        "memory",
+        "hyprland/window"
+    ],
+    "modules-center": [
+        "hyprland/workspaces"
+    ],
+    "modules-right": [
+        "pulseaudio",
+        "network",
+        "power-profiles-daemon",
+        "backlight",
+        "battery",
+        "clock",
+        "tray",
+        "custom/notification"
+    ],
+    "hyprland/window": {
+        "format": "{class}",
+        "icon": true,
+        "icon-size": 20
+      },
+    "hyprland/workspaces": {
+        "on-scroll-up": "hyprctl dispatch workspace r-1",
+        "on-scroll-down": "hyprctl dispatch workspace r+1",
+        "on-click": "activate",
+        "active-only": false,
+        "all-outputs": true,
+        "format": "{icon}",
+        "format-icons": {
+            "urgent": "",
+            "active": "󱙷",
+            "default": "󱔐"
+        },
+        "persistent-workspaces": {
+            "*": 4
+        }
+    },
+    "keyboard-state": {
+        "numlock": true,
+        "capslock": true,
+        "format": "{icon}",
+        "format-icons": {
+            "locked": "",
+            "unlocked": ""
+        }
+    },
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "",
+            "deactivated": "󱗣"
+        }
+    },
+    "tray": {
+        "spacing": 5
+    },
+    "clock": {
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "format-alt": "{:%Y-%m-%d}"
+    },
+    "cpu": {
+        "format": "󰧑 {usage}%",
+        "tooltip": false
+    },
+    "memory": {
+        "format": "󱍄 {}%"
+    },
+    "temperature": {
+        "critical-threshold": 80,
+        "format": "{temperatureC}°C {icon}",
+        "format-icons": [
+            "",
+            "",
+            ""
+        ]
+    },
+    "backlight": {
+        // "device": "acpi_video1",
+        "format": "{icon}",
+        "format-alt":"{percent}% {icon}", 
+        "tooltip-format":"{percent}% {icon}", 
+        "format-icons": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+        ]
+    },
+    "battery": {
+        "states": {
+            "good": 80,
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon}",
+        "format-full": "{icon}",
+        "tooltip-format": "{capacity}%",
+        "format-charging": "",
+        "tooltip-format-charging": "{time} {capacity}%",
+        "format-plugged": "󱈏",
+        "format-alt": "{time} || {capacity}%",
+        "format-icons": [
+            "󰁺",
+            "󰁻",
+            "󰁼",
+            "󰁽",
+            "󰁾",
+            "󰁿",
+            "󰂀",
+            "󰂁",
+            "󰂂"
+        ]
+    },
+    "battery#bat2": {
+        "bat": "BAT2"
+    },
+    "power-profiles-daemon": {
+        "format": "{icon}",
+        "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
+        "tooltip": true,
+        "format-icons": {
+            "default": "",
+            "performance": "",
+            "balanced": "",
+            "power-saver": ""
+        }
+    },
+    "network": {
+        "format-wifi": "{icon}",
+        "format-alt": "{signalStrength}% {icon}",
+        "format-ethernet": "{ipaddr}/{cidr} ",
+        "tooltip-format": "{ifname} via {gwaddr}",
+        "format-linked": "{ifname} (No IP) ",
+        "format-disconnected": "󰤮",
+        "on-click-right": "$HOME/.config/hypr/rofi-wifi-menu.sh",
+        "format-icons":[
+            "󰤯",
+            "󰤟",
+            "󰤢",
+            "󰤥",
+            "󰤨"
+        ]
+    },
+    "pulseaudio": {
+        "scroll-step": 1, // %, can be a float
+        "format": "{icon}",
+        "format-muted": "",
+        "format-source": "",
+        "format-source-muted": "",
+        "format-icons": {
+            "headphone": "",
+            "headset": "",
+            "default": [
+                "",
+                "",
+                ""
+            ]
+        },
+        "on-click": "$HOME/.config/rofi/applets/bin/volume.sh",
+        "on-click-right": "pavucontrol"
+    },
+    "custom/power_menu": {
+        "format": "󱡉",
+        "tooltip": true,
+        "tooltip-format": "Power Menu",
+        "on-click": "$HOME/.config/rofi/applets/bin/powermenu.sh"
+    },
+    "custom/notification": {
+	"tooltip": true,
+	"format": "{icon}",
+	"format-icons": {
+	     "notification": "<span foreground='red'><small><sup>⬤</sup></small></span>",
+	     "none": " ",
+	     "dnd-notification": "<span foreground='red'><small><sup>⬤</sup></small></span>",
+	     "dnd-none": " "
+	    }
+    }
+}
