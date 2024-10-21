@@ -35,7 +35,7 @@ Thanks also to [Eric Murphy](https://ericmurphy.xyz/) for his [rofi wifi menu](h
 ![Launcher](Resources/setup.png)
 
 ### Desktop
-![Setup](flex2.png)
+![Setup](Resources/flex2.png)
 
 ### Wallpaper Switcher
 ![Wallpaper Switcher](Resources/wallpaper_switcher.png)
