@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ####################################################################################
-# STOLEN FROM JaKooLit: 
+# STOLEN FROM (actually modified version of) JaKooLit: 
 # https://github.com/JaKooLit/Ja_HyprLanD-dots/blob/main/config/hypr/scripts/volume
 ####################################################################################
 

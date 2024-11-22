@@ -1,0 +1,104 @@
+{
+    // Global configuration
+    "layer": "top",
+    "position": "top",
+    "height": 0,
+    "spacing": 0,
+    "margin-left": 5,
+    "margin-right": 5,
+    "margin-top": 5,
+    // Modules order
+    "modules-left": ["custom/power_menu","hyprland/window"],
+    "modules-center": ["hyprland/workspaces"],
+    "modules-right": [
+      "tray",
+      "custom/notification",
+      "bluetooth",
+      "pulseaudio",
+      "battery",
+      "clock"
+    ],
+    // Modules configuration
+    "hyprland/workspaces": {
+      "all-outputs": true,
+      "on-click": "activate",
+      "format": "{icon}",
+      "format-icons": {
+        "default": "󰊠",
+        "active": "󰮯"
+      },
+      "persistent-workspaces": {
+        "*": 4
+    },
+      "sort-by": "id"
+    },
+    "hyprland/window": {
+      "format": "{class}",
+      "icon": true,
+      "icon-size": 20
+    },
+    "pulseaudio": {
+      "scroll-step": 5,
+      "format": "{icon} {volume}%{format_source}",
+      "format-muted": "<span foreground='#FF5555'></span>  {format_source}",
+      "format-source-muted": " <span foreground='#FF5555'></span> ",
+      "format-icons": {
+        "default": ["", " ", " "]
+      },
+      "on-click": "pavucontrol"
+    },
+    "battery": {
+      "interval": 60,
+      "states": {
+        "warning": 30,
+        "critical": 15
+      },
+      "format": "{icon}  {capacity}%",
+      "format-icons": ["", "", "", "", ""],
+      "on-click": "~/.config/rofi/powermenu.sh"
+    },
+    "tray": {
+      "icon-size": 20,
+      "spacing": 10
+    },
+    "clock": {
+      "timezone": "Europe/Warsaw",
+      "format": "{:%d.%m %R}",
+      "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+      "on-click": "~/.config/hypr/scripts/google_calendar.sh"
+    },
+    "custom/notification": {
+      "tooltip": false,
+      "format": "{icon}",
+      "format-icons": {
+        "notification": "<span foreground='#8BE9FD'></span>",
+        "none": "",
+        "dnd-notification": "<span foreground='#8BE9FD'></span>",
+        "dnd-none": "",
+        "inhibited-notification": "<span foreground='#8BE9FD'></span>",
+        "inhibited-none": "",
+        "dnd-inhibited-notification": "<span foreground='#8BE9FD'></span>",
+        "dnd-inhibited-none": ""
+      },
+      "return-type": "json",
+      "exec-if": "which swaync-client",
+      "exec": "swaync-client -swb",
+      "on-click": "swaync-client -t -sw",
+      "on-click-right": "swaync-client -d -sw",
+      "escape": true
+    },
+    "bluetooth": {
+      "format": "",
+      "format-disabled": "",
+      "format-connected": "<span foreground='#8BE9FD'></span>",
+      "tooltip-format": "{controller_alias}\t{controller_address}",
+      "tooltip-format-connected": "Controller:\n{controller_alias}\t{controller_address}\n\nDevices connected {num_connections}:\n{device_enumerate}",
+      "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}\t{device_battery_percentage}% battery"
+    },
+    "custom/power_menu": {
+        "format": "󰙚",
+        "tooltip": true,
+        "tooltip-format": "Power Menu",
+        "on-click": "$HOME/.config/rofi/applets/bin/powermenu.sh"
+    }
+  }

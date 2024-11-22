@@ -5,7 +5,7 @@
     "height": 30, // Waybar height (to be removed for auto height)
     "spacing": 4, // Gaps between modules (4px)
     "modules-left": [
-        "custom/power_menu",
+        "custom/theme",
         "cpu",
         "memory",
         "hyprland/window"
@@ -37,8 +37,8 @@
         "format": "{icon}",
         "format-icons": {
             "urgent": "",
-            "active": "󱙷",
-            "default": "󱔐"
+            "active": "",
+            "default": "󱐌"
         },
         "persistent-workspaces": {
             "*": 4
@@ -147,7 +147,7 @@
         "tooltip-format": "{ifname} via {gwaddr}",
         "format-linked": "{ifname} (No IP) ",
         "format-disconnected": "󰤮",
-        "on-click-right": "$HOME/.config/hypr/rofi-wifi-menu.sh",
+        "on-click-right": "$HOME/.config/hypr/scripts/rofi-wifi-menu.sh",
         "format-icons":[
             "󰤯",
             "󰤟",
@@ -199,5 +199,10 @@
         "on-click": "swaync-client -t -sw",
         "on-click-right": "swaync-client -d -sw",
         "escape": true,
+      },
+      "custom/theme": {
+        "tooltip": false,
+        "format": "󱠓",
+        "on-click": "$HOME/.config/hypr/scripts/theme_switcher.sh",
       }
 }

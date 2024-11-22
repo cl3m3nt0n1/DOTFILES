@@ -1,0 +1,308 @@
+
+@define-color bg rgba(38, 84, 124, 255);          /* yinmn-blue */
+@define-color accent_1 rgba(239, 71, 111, 255);   /* bright-pink-crayola */
+@define-color accent_2 rgba(255, 209, 102, 255);  /* sunglow */
+@define-color accent_3 rgba(6, 214, 160, 255);    /* emerald */
+
+
+* {
+    font-family: 'RecMonoCasual NerdFont', 'InConsolata NerdFont', 'JetBrainsMono', 'Noto Sans Mono', monospace;
+    font-size: 14px;
+    font-weight: bold;
+    border: none;
+    border-radius: 0;
+    min-height: 0;
+}
+
+window#waybar {
+    background-color: rgba(0, 0, 0, 0);
+    color: #ffffff;
+    transition-property: background-color;
+    transition-duration: .5s;
+}
+
+
+.modules-left {
+    margin: 10px;
+    padding:  0.3rem;
+    padding-right: 1.1rem;
+    padding-left:  1.1rem;
+    box-shadow: 7px 7px 2px 1px @bg;
+    color: @bg;
+    border: 5px solid @accent_2;
+    background-color: @accent_3;
+}
+
+.modules-right {
+    margin: 10px;
+    padding:  0.3rem;
+    padding-right: 1.1rem;
+    padding-left:  1.1rem;
+    box-shadow: 7px 7px 2px 1px @bg;
+    color: @accent_3;
+    border: 5px solid @accent_3;
+    background-color: @bg;
+}
+
+.modules-center {
+    margin: 10px;
+    padding:  0.3rem;
+    padding-right: 1.1rem;
+    padding-left:  1.1rem;
+    box-shadow: 7px 7px 2px 1px @bg;
+    color: @accent_1;
+    border: 5px solid @accent_1;
+    background-color: @accent_2;
+}
+
+window#waybar.hidden {
+    opacity: 0.2;
+}
+
+button {
+    /* Use box-shadow instead of border so the text isn't offset */
+    box-shadow: inset 0 -3px transparent;
+    /* Avoid rounded borders under each button name */
+    border: none;
+    border-radius: 5px;
+    /* transition: all 0.3s ease-in; */
+}
+
+/* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
+#workspaces button:hover {
+    background: inherit;
+    opacity: 0.8;
+    transition-duration: 0.1s;
+    min-width: 30px;
+}
+
+#workspaces button {
+    padding: 0 5px;
+    /* background-color: transparent; */
+    transition: all 0.3s ease-in-out;
+    opacity: 0.4;
+}
+
+#workspaces button.active {
+    transition: all 0.3s ease-in-out;
+    opacity: 1.0;
+    /* transition-duration: 0.5s; */
+}
+
+#workspaces button.urgent {
+    background-color: #eb4d4b;
+}
+
+#mode {
+    /* background-color: #64727D; */
+    box-shadow: inset 0 -3px #ffffff;
+} 
+
+#clock,
+#battery,
+#disk,
+#temperature,
+#backlight,
+#network,
+#pulseaudio,
+#wireplumber,
+#custom-media,
+#mode,
+#idle_inhibitor,
+#scratchpad,
+#power-profiles-daemon,
+#mpd {
+    margin: 0 8px;
+    background: none;
+    border: none;
+    border-radius: 3px;    
+    
+}
+#cpu,
+#memory
+{
+    padding: 0 10px;
+    background: none;
+    border: none;
+    border-radius: 3px;    
+    
+}
+#custom-power_menu,
+#custom-theme,
+#custom-notification,
+#tray
+{
+    padding: 0 15px;
+    background: none;
+    border: none;
+    border-radius: 3px;    
+}
+
+
+
+#clock:hover,
+#battery:hover,
+#cpu:hover,
+#memory:hover,
+#disk:hover,
+#temperature:hover,
+#backlight:hover,
+#network:hover,
+#pulseaudio:hover,
+#wireplumber:hover,
+#custom-media:hover,
+#tray:hover,
+#mode:hover,
+#idle_inhibitor:hover,
+#scratchpad:hover,
+#power-profiles-daemon:hover,
+#mpd:hover,
+#custom-power_menu:hover,
+#custom-theme:hover,
+#custom-notification:hover{
+    color: inherit;
+    transition-duration: 0.5s;    
+}
+
+#window,
+#workspaces {
+    margin: 0 4px;
+}
+
+/* If workspaces is the leftmost module, omit left margin */
+.modules-left > widget:first-child > #workspaces {
+    margin-left: 0;
+}
+
+/* If workspaces is the rightmost module, omit right margin */
+.modules-right > widget:last-child > #workspaces {
+    margin-right: 0;
+}
+
+@keyframes blink {
+    to {
+        background-color: #ffffff;
+        color: #000000;
+    }
+}
+
+/* Using steps() instead of linear as a timing function to limit cpu usage */
+#battery.critical:not(.charging) {
+    background-color: #f53c3c;
+    color: #ffffff;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: steps(12);
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+label:focus {
+    /* background-color: #000000; */
+}
+
+#cpu {
+    /* background-color: #2ecc71; */
+    /* color: #000000; */
+}
+
+#memory {
+    /* background-color: #9b59b6; */
+}
+
+#disk {
+    /* background-color: #964B00; */
+}
+
+#backlight {
+    /* background-color: #90b1b1; */
+}
+
+#network {
+    /* background-color: #2980b9; */
+}
+
+#network.disconnected {
+    /* background-color: #f53c3c; */
+    color: #f53c3c;
+}
+
+#pulseaudio {
+    /* background-color: #f1c40f; */
+    /* color: #000000; */
+}
+
+#pulseaudio.muted {
+    /* background-color: #90b1b1; */
+    color: #2a5c45;
+}
+
+#wireplumber {
+    /* background-color: #fff0f5; */
+    /* color: #000000; */
+}
+
+#wireplumber.muted {
+    /* background-color: #f53c3c; */
+}
+
+#custom-media {
+    /* background-color: #66cc99; */
+    /* color: #2a5c45; */
+    /* min-width: 100px; */
+}
+
+#custom-media.custom-spotify {
+    /* background-color: #66cc99; */
+}
+
+#custom-media.custom-vlc {
+    /* background-color: #ffa000; */
+}
+
+#temperature {
+    /* background-color: #f0932b; */
+}
+
+#temperature.critical {
+    /* background-color: #eb4d4b; */
+}
+
+#tray {
+    /* background-color: #75A47F; */
+    padding-left:  5px;
+    padding-right: 5px;
+}
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+    /* background-color: #eb4d4b; */
+}
+
+#idle_inhibitor {
+    /* background-color: #2d3436; */
+}
+
+#idle_inhibitor.activated {
+    /* background-color: #ecf0f1; */
+    /* color: #2d3436; */
+}
+
+
+#custom-power_menu{
+    /* background-color: #75A47F; */
+}
+
+#custom-theme{
+    /* background-color: #75A47F; */
+}
+
+#custom-notification{
+    /* background-color: #75A47F; */
+}
+
+
